@@ -1,0 +1,11 @@
+7:
+    name: Pulsar
+    card_type: star 
+    temperature: 1000000
+    power: Discard a random spell and draw a spell
+    superpower: Return a random spell from your discard pile to your hand
+    limit_cloud: 3
+    limit_water: 1
+    limit_rock: 2
+    limit_plutonium: 2
+    image_location : assets/stars/Pulsar.png

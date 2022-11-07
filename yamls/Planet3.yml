@@ -1,0 +1,13 @@
+3:
+    name: Fujin
+    card_type: planet
+    planet_type: rocky
+    effect: This planet gains +2 if you haven't played your star's superpower
+    damage: 2
+    goldilock: False
+    trasure_rock: 1
+    trasure_water: 0
+    tresure_cloud: 1
+    treasure_plutonium: 0
+    image_location : assets/planets/red15b.png
+
