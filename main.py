@@ -48,10 +48,15 @@ def main():
                 clicked_cards = [c for c in gm.visible_cards if c.sprite.rect.collidepoint(pos)]
                 for card in clicked_cards:
                     if card.card_type == "planet":
-                        print(card.sprite.pos_x)
-                        #gm.play_planet(gm.player2, card)
-                        gm.visible_cards.remove(card)
-        
-    
+                        if card.owner == 1:
+                            player = gm.player1
+                        elif card.owner == 2:
+                            player = gm.player2
+
+                        if card in player.hand:
+                            gm.play_planet(player, card)
+                        elif card in player.galaxy:
+                            pass
+                        #gm.visible_cards.remove(card)
 
 main()

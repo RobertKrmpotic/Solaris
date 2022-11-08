@@ -10,14 +10,15 @@ def read_yaml_file(full_path:str):
             except yaml.YAMLError as exc:
                 print(exc)
 
-def create_deck_dict( yml_name:str ):
+def create_deck_dict( yml_names:list ):
     ''' Creates a dictionary of cards'''
-    files = glob.glob(f"C:/Users/Robert/Downloads/Cheating is learning/Solaris pygame/yamls/{yml_name}*.yml") 
     deck_dict = {}
-    for file in files:
-        card_dict = read_yaml_file(file)
-        for key in card_dict:
-            deck_dict[key] = card_dict[key]
+    for yml_name in yml_names:
+        files = glob.glob(f"C:/Users/Robert/Downloads/Cheating is learning/Solaris pygame/yamls/{yml_name}*.yml") 
+        for file in files:
+            card_dict = read_yaml_file(file)
+            for key in card_dict:
+                deck_dict[key] = card_dict[key]
     return deck_dict
 
 def create_deck_list(deck_dict:dict):

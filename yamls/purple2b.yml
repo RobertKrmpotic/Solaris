@@ -1,0 +1,13 @@
+purple2b:
+    name: Iris
+    card_type: planet
+    planet_type: gas
+    effect: You can draw a spell when you play your star's power.
+    damage: 1
+    goldilock: False
+    trasure_rock: 0
+    trasure_water: 0
+    tresure_cloud: 1
+    treasure_plutonium: 0
+    image_location : assets/planets/purple2b_small.png
+    

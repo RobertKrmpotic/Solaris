@@ -1,0 +1,14 @@
+purple4:
+    name: Brigid
+    card_type: planet
+    planet_type: gas
+    once_created: False
+    effect: Once per turn you can draw a spell.
+    damage: 1
+    goldilock: True
+    trasure_rock: 0
+    trasure_water: 0
+    tresure_cloud: 1
+    treasure_plutonium: 0
+    image_location : assets/planets/purple4_small.png
+    

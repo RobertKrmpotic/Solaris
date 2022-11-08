@@ -1,0 +1,14 @@
+green10b:
+    name: Neto
+    card_type: planet
+    planet_type: dwarf
+    once_created: True
+    effect: Once created, draw 3 planets.
+    damage: 1
+    goldilock: False
+    trasure_rock: 1
+    trasure_water: 0
+    tresure_cloud: 1
+    treasure_plutonium: 1
+    image_location : assets/planets/green10b_small.png
+    

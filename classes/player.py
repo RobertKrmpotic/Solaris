@@ -42,9 +42,10 @@ class Player():
                 x += 200
     
     def sort_galaxy(self):
-
-        if len(self.hand) >0:
-            x = 400
+        ''' Sort galaxy to have good x'''
+        if len(self.galaxy) >0:
+            x = 300
             for planet in self.galaxy:
+                
                 planet.sprite.move(x,self.galaxy_y)
                 x += 200

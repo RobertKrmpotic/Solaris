@@ -1,0 +1,14 @@
+red1b:
+    name: Anat
+    card_type: planet
+    planet_type: rocky
+    once_created: False
+    effect: Gains +2 if you have 5 or more planets.
+    damage: 2
+    goldilock: False
+    trasure_rock: 1
+    trasure_water: 0
+    tresure_cloud: 0
+    treasure_plutonium: 0
+    image_location : assets/planets/red1b_small.png
+    

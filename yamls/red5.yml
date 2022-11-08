@@ -1,0 +1,14 @@
+red5:
+    name: Ares
+    card_type: planet
+    planet_type: rocky
+    once_created: False
+    effect: This planet can't be destroyed.
+    damage: 4
+    goldilock: True
+    trasure_rock: 2
+    trasure_water: 0
+    tresure_cloud: 0
+    treasure_plutonium: 0
+    image_location : assets/planets/red5_small.png
+    
