@@ -17,7 +17,7 @@ class TurnManager:
 
 
 
-    def next_phase(self):
+    def next_phase(self,players):
         ''' moves to the next phase'''
 
         if self.phase =="pre_game_setup":
@@ -27,6 +27,8 @@ class TurnManager:
             self.phase = "first_planet"
         
         elif self.phase =="first_planet":
+            for player in players.values():
+                player.reset_planet_created()
             self.turn_n += 1
             self.phase = "draw_phase"
         
@@ -51,6 +53,9 @@ class TurnManager:
             if self.player_turn ==1:
                 self.player_turn =2
             else:
+                for player in players.values():
+                    player.reset_planet_created()
+                    player.reset_mana()
                 self.turn_n +=1
                 self.phase = "draw_phase"
                 self.player_turn = 1

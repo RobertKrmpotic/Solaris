@@ -3,7 +3,9 @@ class Player():
         self.number = number
         self.current_move = False
         self.star = None
+        self.planet_limits = {}
         self.power_played = False
+        self.player_created = False
         self.superpower_played = False
         self.hand = []
         self.hand_y = self.calc_hand_y()
@@ -49,3 +51,26 @@ class Player():
                 
                 planet.sprite.move(x,self.galaxy_y)
                 x += 200
+    
+    def galaxy_planets_sum(self,type:int):
+        ''' gets a sum of types of planets'''
+        sum = 0
+        for planet in self.galaxy:
+            if planet.planet_type == type:
+                sum +=1
+        return sum
+
+    def reset_mana(self):
+        self.mana = self.max_mana
+    
+    def reset_planet_created(self):
+        self.player_created = False
+    
+    def set_limits(self):
+        ''' sets a dict with planet limits'''
+        limit_dict = {}
+        limit_dict["gas"] = self.star.limit_gas
+        limit_dict["water"] = self.star.limit_water
+        limit_dict["rocky"] = self.star.limit_rocky
+        limit_dict["dwarf"] = self.star.limit_dwarf
+        self.planet_limits = limit_dict

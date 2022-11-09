@@ -6,11 +6,20 @@ from classes.deck import Deck
 from classes.game_manager import GameManager
 
 
-def renderGame(window,background,visible_cards):
+def renderGame(window,background,visible_cards,button, phase, player_turn):
     window.blit(background, ( 0,0))
-    font = pygame.font.SysFont('comicsans',60, True)
+    font = pygame.font.SysFont('Roboto',45, True)
     for card in visible_cards:
         card.sprite.draw(window)
+
+
+    RED = (255, 255, 255)
+    pygame.draw.rect(window, RED, button)
+    # You can pass the center directly to the `get_rect` method.
+    text_surf = font.render(f"phase :{phase}, player: {player_turn}", True, RED)
+    text_rect = text_surf.get_rect(center=(1200/2, 630))
+    window.blit(text_surf, text_rect)
+    pygame.display.update()
 
 def main():
     pygame.init()
@@ -25,15 +34,14 @@ def main():
 
     for player in gm.get_players():
         gm.visible_cards.append(player.star)
-        for card in player.hand:
-            gm.visible_cards.append(card)
+        #for card in player.hand:
+            #gm.visible_cards.append(card)
             #sprites.add(card.sprite)
 
     while run:
         key = None 
         gm.sort_hands()
-        renderGame(window,background, gm.visible_cards)
-        #sprites.draw(window)
+        button = pygame.Rect(0, 100, 100, 100)
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -43,20 +51,17 @@ def main():
                 key = event.key
             if event.type == pygame.MOUSEBUTTONUP:
                 pos = pygame.mouse.get_pos()
-                gm.next_phase()
+                if event.button == 1:
+                    if button.collidepoint(event.pos):
+                        gm.next_phase()
                 
+
                 clicked_cards = [c for c in gm.visible_cards if c.sprite.rect.collidepoint(pos)]
                 for card in clicked_cards:
-                    if card.card_type == "planet":
-                        if card.owner == 1:
-                            player = gm.player1
-                        elif card.owner == 2:
-                            player = gm.player2
+                    gm.clicked_card(card, card.owner)
+                
+                
 
-                        if card in player.hand:
-                            gm.play_planet(player, card)
-                        elif card in player.galaxy:
-                            pass
-                        #gm.visible_cards.remove(card)
+        renderGame(window,background, gm.visible_cards, button,gm.turn_manager.phase, gm.turn_manager.player_turn)
 
 main()
