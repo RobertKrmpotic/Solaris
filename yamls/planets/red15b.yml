@@ -6,9 +6,9 @@ red15b:
     effect: Deals +2 to superinvaders.
     damage: 2
     goldilock: False
-    trasure_rock: 2
-    trasure_water: 0
-    tresure_cloud: 0
+    treasure_rock: 2
+    treasure_water: 0
+    treasure_cloud: 0
     treasure_plutonium: 0
     image_location : assets/planets/red15b_small.png
     

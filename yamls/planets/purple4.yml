@@ -6,9 +6,9 @@ purple4:
     effect: Once per turn you can draw a spell.
     damage: 1
     goldilock: True
-    trasure_rock: 0
-    trasure_water: 0
-    tresure_cloud: 1
+    treasure_rock: 0
+    treasure_water: 0
+    treasure_cloud: 1
     treasure_plutonium: 0
     image_location : assets/planets/purple4_small.png
     

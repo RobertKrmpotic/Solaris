@@ -6,9 +6,9 @@ blue13b:
     effect: Gains +1 for every rocky planet in your system.
     damage: 2
     goldilock: False
-    trasure_rock: 0 
-    trasure_water: 1
-    tresure_cloud: 0
+    treasure_rock: 0 
+    treasure_water: 1
+    treasure_cloud: 0
     treasure_plutonium: 0
     image_location : assets/planets/blue13b_small.png
     

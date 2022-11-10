@@ -6,9 +6,9 @@ blue6:
     effect: Once per turn, you can discard a planed to draw a trap.
     damage: 1
     goldilock: False
-    trasure_rock: 0
-    trasure_water: 2
-    tresure_cloud: 0
+    treasure_rock: 0
+    treasure_water: 2
+    treasure_cloud: 0
     treasure_plutonium: 0
     image_location : assets/planets/blue6_small.png
 

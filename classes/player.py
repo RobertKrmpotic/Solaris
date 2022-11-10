@@ -13,7 +13,8 @@ class Player():
         self.discard_pile = []
         self.galaxy = [] #can be dict?
         self.entrance = []
-        self.leaches = 0
+        self.leaches = []
+        self.leach_count = 0
         self.points = 0
         self.max_mana = 4
         self.mana = self.max_mana
@@ -34,6 +35,13 @@ class Player():
         ''' Move star to starting position'''
         x = 100
         self.star.sprite.move(x,self.galaxy_y)
+
+    def sort_invaders(self):
+        ''' Sort invader sprites'''
+        x = 900
+        for invader in self.entrance:  
+            invader.sprite.move(x,self.galaxy_y-50)
+            x += 200
 
     def sort_hand(self):
 
@@ -74,3 +82,11 @@ class Player():
         limit_dict["rocky"] = self.star.limit_rocky
         limit_dict["dwarf"] = self.star.limit_dwarf
         self.planet_limits = limit_dict
+
+    def sum_treasure(self, element):
+        ''' Sum total of a specific types of treasure'''
+        total_treasure = 0
+        for planet in self.galaxy:
+            total_treasure += planet.treasure_dict[element]
+        return total_treasure
+

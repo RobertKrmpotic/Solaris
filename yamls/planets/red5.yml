@@ -6,9 +6,9 @@ red5:
     effect: This planet can't be destroyed.
     damage: 4
     goldilock: True
-    trasure_rock: 2
-    trasure_water: 0
-    tresure_cloud: 0
+    treasure_rock: 2
+    treasure_water: 0
+    treasure_cloud: 0
     treasure_plutonium: 0
     image_location : assets/planets/red5_small.png
     

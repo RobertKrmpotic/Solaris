@@ -1,0 +1,8 @@
+jupiterian1:
+    name: Jupiterian
+    card_type: invader
+    hp: 2
+    attracted_to: cloud
+    image_location : assets/invaders/expedition5B.png
+    super: False
+    pirate: False

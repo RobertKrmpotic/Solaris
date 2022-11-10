@@ -6,9 +6,9 @@ blue12b:
     effect: Gains +1 for every trap in your system
     damage: 2
     goldilock: False
-    trasure_rock: 0
-    trasure_water: 1
-    tresure_cloud: 0
+    treasure_rock: 0
+    treasure_water: 1
+    treasure_cloud: 0
     treasure_plutonium: 0
     image_location : assets/planets/blue12b_small.png
     

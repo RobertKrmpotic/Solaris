@@ -6,9 +6,9 @@ green10b:
     effect: Once created, draw 3 planets.
     damage: 1
     goldilock: False
-    trasure_rock: 1
-    trasure_water: 0
-    tresure_cloud: 1
+    treasure_rock: 1
+    treasure_water: 0
+    treasure_cloud: 1
     treasure_plutonium: 1
     image_location : assets/planets/green10b_small.png
     
