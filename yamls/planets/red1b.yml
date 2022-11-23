@@ -1,8 +1,9 @@
 red1b:
+    id: red1b
     name: Anat
     card_type: planet
     planet_type: rocky
-    once_created: False
+    once_created: True
     effect: Gains +2 if you have 5 or more planets.
     damage: 2
     goldilock: False

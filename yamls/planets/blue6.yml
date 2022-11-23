@@ -1,4 +1,5 @@
 blue6:
+    id: blue6
     name: Paricia
     card_type: planet
     planet_type: water

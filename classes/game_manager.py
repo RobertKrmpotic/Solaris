@@ -7,6 +7,7 @@ from classes.card import Card
 from classes.turn_manager import TurnManager
 
 from classes.utils import create_deck_dict, create_deck_list
+from classes.effects import effect_dict
 class GameManager:
     def __init__(self):
         self.player1= Player(1)
@@ -27,12 +28,12 @@ class GameManager:
     def get_players(self):
         return [self.player1, self.player2]
 
-    def switch_lists(self,card,from_list, to_list):
+    def switch_lists(self,card:Card,from_list:list, to_list:list):
         ''' Takes a card from one list and append it to the other '''
         to_list.append(card)
         from_list.remove(card)
     
-    def deal_card(self,deck, owner):
+    def deal_card(self,deck:Deck, owner:int):
         ''' deal a card from the deck to a player hand'''
         card = deck.list.pop()
         card.owner = owner
@@ -56,7 +57,7 @@ class GameManager:
         for player in self.get_players():
             player.sort_hand()
 
-    def clicked_card(self, card, owner:int):
+    def clicked_card(self, card:Card, owner:int):
         ''' What to do when a card is clicked'''
         if card.card_type == "planet":
             allowed = self.check_allowed_planet_play(card,owner)
@@ -81,6 +82,8 @@ class GameManager:
             self.lure_invaders()
         if self.turn_manager.phase == "invasion_phase":
             self.invade_galaxy(self.turn_manager.player_turn)
+
+            pass
         
 
     # STAR
@@ -109,7 +112,7 @@ class GameManager:
             invader.sprite.move(limbo_x,limbo_y)
             limbo_x += 200
 
-    def invaders_to_limbo(self,deck,n):
+    def invaders_to_limbo(self,deck:Deck,n:int):
         ''' Send invaders from invaders deck to limbo'''
         for _ in range(0,n):
             card = deck.list.pop()
@@ -179,9 +182,9 @@ class GameManager:
         else:
             return False
 
-    def planet_played(self,owner):
+    def planet_played(self,owner:int):
         ''' Check if player has created a planet this turn'''
-        if self.players[owner].player_created == True:
+        if len(self.players[owner].planet_played_this_turn) > 0:
                 return True
         else:
             return False
@@ -204,9 +207,19 @@ class GameManager:
         else:
             return False
 
-    def play_planet(self, player, planet):
+    def play_once_created_effect(self,player):
+        ''' check if once created effect neeeds to be played'''
+        card = player.planet_played_this_turn[-1]
+        if card.once_created:
+            effect = effect_dict[card.id]
+            effect["function"](self,card,*effect["args"])
+            print()
+            print("once created")
+
+    def play_planet(self, player:Player, planet:Card):
         ''' Take a planet from players hand and put it in their galaxy'''
         self.switch_lists(planet, player.hand, player.galaxy)
+        player.planet_played_this_turn.append(planet)
         player.sort_hand()
         player.sort_galaxy()
-        player.player_created = True
+        self.play_once_created_effect(player)

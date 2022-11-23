@@ -1,4 +1,5 @@
 red15b:
+    id: red15b
     name: Kamar
     card_type: planet
     planet_type: rocky

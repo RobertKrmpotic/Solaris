@@ -1,4 +1,5 @@
 red5:
+    id: red5
     name: Ares
     card_type: planet
     planet_type: rocky

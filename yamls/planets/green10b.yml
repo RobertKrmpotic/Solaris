@@ -1,4 +1,5 @@
 green10b:
+    id: green10b
     name: Neto
     card_type: planet
     planet_type: dwarf

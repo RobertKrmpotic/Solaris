@@ -4,14 +4,15 @@ class Player():
         self.current_move = False
         self.star = None
         self.planet_limits = {}
-        self.power_played = False
-        self.player_created = False
+        self.planet_created = False
         self.superpower_played = False
+        self.power_played = False
         self.hand = []
         self.hand_y = self.calc_hand_y()
         self.galaxy_y = self.calc_galaxy_y()
         self.discard_pile = []
         self.galaxy = [] #can be dict?
+        self.planet_played_this_turn = []
         self.entrance = []
         self.leaches = []
         self.leach_count = 0
@@ -19,6 +20,8 @@ class Player():
         self.max_mana = 4
         self.mana = self.max_mana
     
+    #VISUAL
+
     def calc_hand_y(self):
         if self.number == 1:
             return 50
@@ -44,7 +47,6 @@ class Player():
             x += 200
 
     def sort_hand(self):
-
         if len(self.hand) >0:
             x = 400
             for card in self.hand:
@@ -56,10 +58,28 @@ class Player():
         if len(self.galaxy) >0:
             x = 300
             for planet in self.galaxy:
-                
                 planet.sprite.move(x,self.galaxy_y)
                 x += 200
+
+    #RESET
+
+    def reset_mana(self):
+        self.mana = self.max_mana
     
+    def reset_planet_created(self):
+        self.planet_played_this_turn = []
+
+    def reset_power_played(self):
+        self.power_played = False
+
+    def end_turn_reset(self):
+        ''' Resets stats that were altered this turn'''
+        self.reset_mana()
+        self.reset_planet_created()
+        self.reset_power_played()
+
+    ## SUMS AND LIMITS
+
     def galaxy_planets_sum(self,type:int):
         ''' gets a sum of types of planets'''
         sum = 0
@@ -68,12 +88,6 @@ class Player():
                 sum +=1
         return sum
 
-    def reset_mana(self):
-        self.mana = self.max_mana
-    
-    def reset_planet_created(self):
-        self.player_created = False
-    
     def set_limits(self):
         ''' sets a dict with planet limits'''
         limit_dict = {}
@@ -89,4 +103,3 @@ class Player():
         for planet in self.galaxy:
             total_treasure += planet.treasure_dict[element]
         return total_treasure
-

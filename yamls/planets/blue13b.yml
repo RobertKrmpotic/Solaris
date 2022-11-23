@@ -1,8 +1,9 @@
 blue13b:
+    id: blue13b
     name: Matsya
     card_type: planet
     planet_type: water
-    once_created: False
+    once_created: True
     effect: Gains +1 for every rocky planet in your system.
     damage: 2
     goldilock: False

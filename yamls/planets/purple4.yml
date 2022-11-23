@@ -1,4 +1,5 @@
 purple4:
+    id: purple4
     name: Brigid
     card_type: planet
     planet_type: gas

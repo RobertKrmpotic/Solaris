@@ -1,7 +1,9 @@
 purple2b:
+    id: purple2b
     name: Iris
     card_type: planet
     planet_type: gas
+    once_created: False
     effect: You can draw a spell when you play your star's power.
     damage: 1
     goldilock: False

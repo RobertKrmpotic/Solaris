@@ -1,8 +1,9 @@
 blue12b:
+    id: blue12b
     name: Nix
     card_type: planet
     planet_type: water
-    once_created: False
+    once_created: True
     effect: Gains +1 for every trap in your system
     damage: 2
     goldilock: False
