@@ -60,13 +60,18 @@ class GameManager:
     def clicked_card(self, card:Card, owner:int):
         ''' What to do when a card is clicked'''
         if card.card_type == "planet":
-            allowed = self.check_allowed_planet_play(card,owner)
-            if allowed:
+            allowed_building = self.check_allowed_planet_play(card,owner)
+            allowed_effect = self.check_allowed_effect(card,owner)
+            if allowed_building:
                 player = self.players[owner]
                 if card in player.hand:
                     self.play_planet(player, card)
-                elif card in player.galaxy:
-                    pass
+            if allowed_effect:
+                player = self.players[owner]
+                if card in player.galaxy:
+                    effect = effect_dict[card.id]
+                    effect["function"](self,card,*effect["args"])
+                    print("effect")
             else:
                 pass 
         self.recalculate_galaxy_damage()
@@ -192,6 +197,7 @@ class GameManager:
             return True
         else:
             return False
+    
 
     def planet_played(self,owner:int):
         ''' Check if player has created a planet this turn'''
@@ -214,6 +220,15 @@ class GameManager:
         if self.correct_phase_for_planet():
             if not self.planet_played(owner): 
                 if self.planet_limit(card,owner):
+                    return True
+        else:
+            return False
+    
+    def check_allowed_effect(self,card:Card,owner:int):
+        ''' check if planet is allowed to be played'''
+        if self.turn_manager.phase in [ "main_phase" ]:
+            if hasattr(card, 'once_per_turn'):
+                if card.once_per_turn:
                     return True
         else:
             return False

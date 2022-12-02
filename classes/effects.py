@@ -35,8 +35,14 @@ def buff_all_planet_types(gm,card,type:str,amount:int, effect_id:str):
             else:
                 buff_itself(gm,planet, "passive_from_another" ,amount,effect_id ) #TODO figure of what types of effects should do
 
+def discard_a_card(gm,card):
+    ''' Discard a card from your hand'''
+    print("discarding cards")
+    card.once_per_turn = False
+
 effect_dict = {
     "green10b" : {"function" : draw_x_planets, "args" : [1]},
+    "blue6" : {"function" : discard_a_card, "args" : [] },
     "blue13b" : {"function" : bonus_for_every_rocky, "args" : ["blue13b"]},
     "blue12b" : {"function" : buff_itself, "args" : [] },
     "red1b" : {"function" : bonus_if_n_planets, "args" : [2,2,"red1b"]},
