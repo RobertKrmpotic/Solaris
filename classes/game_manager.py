@@ -69,6 +69,7 @@ class GameManager:
                     pass
             else:
                 pass 
+        self.recalculate_galaxy_damage()
 
     def next_phase(self):
         ''' Self moves to the next turn'''
@@ -101,13 +102,23 @@ class GameManager:
             player.star = self.star_deck.list.pop()
             player.move_star()
             player.set_limits()
-
+    
+    def recalculate_galaxy_damage(self):
+        ''' Refreshes card damage'''
+        for player in self.players.values():
+            for planet in player.galaxy:
+                for key,buff in planet.buffs.items():
+                    if buff.type == "passive":
+                        effect = effect_dict[planet.id]
+                        effect["function"](self,planet,*effect["args"])
+                planet.recalculate_damage()
+                print(f"planet: {planet.name}, damage: {planet.damage}")
     # Invaders
 
     def sort_limbo(self):
         ''' Sorts position of invaders in the limbo'''
         limbo_y = 600
-        limbo_x = 600
+        limbo_x = 1200
         for invader in self.limbo:
             invader.sprite.move(limbo_x,limbo_y)
             limbo_x += 200
@@ -170,7 +181,7 @@ class GameManager:
     def planet_deck_start(self):
         ''' Load planet cards and assign self.planet_deck and deal starting cards'''
         self.planet_deck_dict = create_deck_dict("planets")
-        planet_deck_list = create_deck_list(self.planet_deck_dict)
+        planet_deck_list = create_deck_list(self.planet_deck_dict,"planet")
         self.planet_deck = Deck(planet_deck_list)
         self.planet_deck.shuffle_deck()
         self.deal_cards(self.planet_deck,3)
@@ -223,3 +234,4 @@ class GameManager:
         player.sort_hand()
         player.sort_galaxy()
         self.play_once_created_effect(player)
+        print(planet.damage)

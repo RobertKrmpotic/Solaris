@@ -3,7 +3,7 @@ red13:
     name: Enkimdu
     card_type: planet
     planet_type: rocky
-    once_created: False
+    once_created: True
     effect: All rocky planets in your system gain +2.
     damage: 0
     goldilock: False

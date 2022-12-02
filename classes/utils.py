@@ -2,6 +2,7 @@ import yaml
 import glob
 
 from classes.card import Card
+from classes.planet import Planet
 
 def read_yaml_file(full_path:str):
         with open(full_path, 'r') as stream:
@@ -20,8 +21,11 @@ def create_deck_dict( folder_name:str ):
             deck_dict[key] = card_dict[key]
     return deck_dict
 
-def create_deck_list(deck_dict:dict):
+def create_deck_list(deck_dict:dict, type:str = ""):
     deck_list = []
     for card in deck_dict:
-        deck_list.append(Card(deck_dict[card]))
+        if type == "planet":
+            deck_list.append(Planet(deck_dict[card]))
+        else:
+            deck_list.append(Card(deck_dict[card]))
     return deck_list

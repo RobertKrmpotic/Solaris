@@ -103,3 +103,4 @@ class Player():
         for planet in self.galaxy:
             total_treasure += planet.treasure_dict[element]
         return total_treasure
+

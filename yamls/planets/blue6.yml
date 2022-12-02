@@ -4,7 +4,7 @@ blue6:
     card_type: planet
     planet_type: water
     once_created: False
-    effect: Once per turn, you can discard a planed to draw a trap.
+    effect: Once per turn, you can discard a planet to draw a trap.
     damage: 1
     goldilock: False
     treasure_rock: 0
